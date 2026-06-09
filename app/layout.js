@@ -1,17 +1,24 @@
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Newsreader, Roboto, Roboto_Mono } from "next/font/google";
 import { site } from "@/data/site";
 import "./globals.css";
 
-// Grotesk body + serif display (editorial) + mono labels.
-// Swap these out to match a specific brand later (e.g. Cadence).
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const fraunces = Fraunces({
+// Design system (ui-ux-pro-max): Exaggerated Minimalism.
+// Editorial serif display (Newsreader) + neutral body (Roboto) + mono labels.
+const newsreader = Newsreader({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
+  adjustFontFallback: false,
 });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const mono = Roboto_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata = {
   title: `${site.fullName} — AI for Construction`,
@@ -20,7 +27,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${mono.variable}`}>
+    <html lang="en" className={`${roboto.variable} ${newsreader.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );

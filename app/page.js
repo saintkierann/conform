@@ -1,19 +1,52 @@
 import { site } from "@/data/site";
 import Reveal from "@/components/Reveal";
 
+// Small inline SVG arrow (no emojis as icons — per design system).
+function Arrow({ className = "" }) {
+  return (
+    <svg className={`arrow ${className}`} width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ArrowUpRight({ className = "" }) {
+  return (
+    <svg className={`arrow ${className}`} width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Section header with oversized ghost numeral + serif title.
+function SectionHead({ index, eyebrow, title }) {
+  return (
+    <Reveal className="sec-head">
+      <span className="sec-index" aria-hidden="true">{index}</span>
+      <div className="sec-title-wrap">
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="heading">{title}</h2>
+      </div>
+    </Reveal>
+  );
+}
+
 export default function Home() {
+  // Split the tagline on an em dash to give the second half an editorial accent.
+  const [taglineA, taglineB] = site.tagline.split("—").map((s) => s.trim());
+
   return (
     <>
       {/* ── Nav ──────────────────────────────────────────────────────────── */}
       <header className="nav">
         <div className="container nav-inner">
           <a href="#top" className="brand">{site.company}</a>
-          <nav className="nav-links">
+          <nav className="nav-links" aria-label="Primary">
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#work">Work</a>
             <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact" className="nav-cta">Contact</a>
           </nav>
         </div>
       </header>
@@ -22,20 +55,37 @@ export default function Home() {
         {/* ── Hero ───────────────────────────────────────────────────────── */}
         <section className="container hero">
           <Reveal as="p" className="eyebrow">{site.eyebrow}</Reveal>
-          <Reveal as="h1" className="display" delay={80}>{site.tagline}</Reveal>
-          <div className="hero-meta">
-            <Reveal className="lead" delay={160}>{site.intro}</Reveal>
-            <Reveal delay={220}>
-              <a href="#contact" className="btn btn--accent">Start a conversation</a>
-            </Reveal>
-          </div>
+          <Reveal as="h1" className="display" delay={80}>
+            {taglineB ? (
+              <>
+                {taglineA} <span className="accent">{taglineB}.</span>
+              </>
+            ) : (
+              site.tagline
+            )}
+          </Reveal>
+          <Reveal className="hero-meta" delay={160}>
+            <a href="#contact" className="btn btn--accent">
+              Start a conversation <Arrow />
+            </a>
+            <div className="hero-facts">
+              {site.heroFacts.map((f) => (
+                <div className="fact" key={f.k}>
+                  <span className="fact-k">{f.k}</span>
+                  <span className="fact-v">{f.v}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </section>
+
+        <div className="container"><Reveal className="stripe" /></div>
 
         {/* ── About ──────────────────────────────────────────────────────── */}
         <section id="about" className="section">
           <div className="container grid-2">
             <Reveal>
-              <p className="eyebrow">About</p>
+              <p className="eyebrow">01 — About</p>
               <h2 className="heading">{site.about.heading}</h2>
               <div className="traits">
                 {site.about.traits.map((t) => (
@@ -56,18 +106,13 @@ export default function Home() {
         {/* ── Services ───────────────────────────────────────────────────── */}
         <section id="services" className="section">
           <div className="container">
-            <Reveal>
-              <p className="eyebrow">What we do</p>
-              <h2 className="heading">Four ways we work with you.</h2>
-            </Reveal>
-            <div className="services-list" style={{ marginTop: "2.5rem" }}>
+            <SectionHead index="02" eyebrow="What we do" title="Four ways we work with you." />
+            <div className="services-list">
               {site.services.map((s, i) => (
-                <Reveal key={s.title} className="service" delay={i * 60}>
+                <Reveal key={s.title} className="service" delay={i * 50}>
                   <span className="service-num">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{s.title}</h3>
-                    <p>{s.body}</p>
-                  </div>
+                  <h3 className="service-title">{s.title}</h3>
+                  <p>{s.body}</p>
                 </Reveal>
               ))}
             </div>
@@ -77,13 +122,10 @@ export default function Home() {
         {/* ── Selected work ──────────────────────────────────────────────── */}
         <section id="work" className="section">
           <div className="container">
-            <Reveal>
-              <p className="eyebrow">Selected work</p>
-              <h2 className="heading">Outcomes we're proud of.</h2>
-            </Reveal>
-            <div className="work-list" style={{ marginTop: "2.5rem" }}>
+            <SectionHead index="03" eyebrow="Selected work" title="Outcomes we're proud of." />
+            <div className="work-list">
               {site.work.map((w, i) => (
-                <Reveal key={w.index} className="work-row" delay={i * 60}>
+                <Reveal key={w.index} className="work-row" delay={i * 50}>
                   <span className="work-num">{w.index}</span>
                   <div>
                     <div className="work-client">{w.client}</div>
@@ -91,7 +133,7 @@ export default function Home() {
                   </div>
                   <div className="work-detail">
                     <p className="work-problem">{w.problem}</p>
-                    <p className="work-outcome">{w.outcome}</p>
+                    <p className="work-outcome"><Arrow /> {w.outcome}</p>
                   </div>
                 </Reveal>
               ))}
@@ -102,11 +144,8 @@ export default function Home() {
         {/* ── Projects ───────────────────────────────────────────────────── */}
         <section id="projects" className="section">
           <div className="container">
-            <Reveal>
-              <p className="eyebrow">From our GitHub</p>
-              <h2 className="heading">Things we've built in the open.</h2>
-            </Reveal>
-            <div className="projects-grid" style={{ marginTop: "2.5rem" }}>
+            <SectionHead index="04" eyebrow="From our GitHub" title="Things we've built in the open." />
+            <div className="projects-grid">
               {site.projects.map((p) => (
                 <a key={p.name} className="project" href={p.url} target="_blank" rel="noreferrer">
                   <div className="project-name">{p.name}</div>
@@ -116,18 +155,18 @@ export default function Home() {
                       <span key={t} className="tag">{t}</span>
                     ))}
                   </div>
-                  <span className="project-link">View on GitHub ↗</span>
+                  <span className="project-link">View on GitHub <ArrowUpRight /></span>
                 </a>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Why us + team ──────────────────────────────────────────────── */}
+        {/* ── Why us ─────────────────────────────────────────────────────── */}
         <section className="section">
           <div className="container grid-2">
             <Reveal>
-              <p className="eyebrow">Why us</p>
+              <p className="eyebrow">05 — Why us</p>
               <h2 className="heading">Reasons teams keep us close.</h2>
             </Reveal>
             <Reveal delay={120}>
@@ -143,15 +182,13 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Team ───────────────────────────────────────────────────────── */}
         <section className="section">
           <div className="container">
-            <Reveal>
-              <p className="eyebrow">The team</p>
-              <h2 className="heading">The people you'll actually work with.</h2>
-            </Reveal>
-            <div className="team-grid" style={{ marginTop: "2.5rem" }}>
+            <SectionHead index="06" eyebrow="The team" title="The people you'll actually work with." />
+            <div className="team-grid">
               {site.team.map((m, i) => (
-                <Reveal key={m.name} delay={i * 60}>
+                <Reveal key={m.name} className="member" delay={i * 50}>
                   <div className="member-name">{m.name}</div>
                   <div className="member-role">{m.role}</div>
                 </Reveal>
@@ -163,10 +200,10 @@ export default function Home() {
         {/* ── Contact ────────────────────────────────────────────────────── */}
         <section id="contact" className="section">
           <div className="container contact">
-            <Reveal as="p" className="eyebrow">Contact</Reveal>
+            <Reveal as="p" className="eyebrow">07 — Contact</Reveal>
             <Reveal as="h2" className="display" delay={80}>Let's figure out what's worth building.</Reveal>
             <Reveal className="contact-actions" delay={160}>
-              <a href={`mailto:${site.email}`} className="btn btn--accent">{site.email}</a>
+              <a href={`mailto:${site.email}`} className="btn btn--accent">{site.email} <Arrow /></a>
               {site.bookingUrl ? (
                 <a href={site.bookingUrl} target="_blank" rel="noreferrer" className="btn">Book a call</a>
               ) : null}
@@ -176,14 +213,16 @@ export default function Home() {
       </main>
 
       {/* ── Footer ───────────────────────────────────────────────────────── */}
-      <footer className="footer container">
-        <span>© {new Date().getFullYear()} {site.company}</span>
-        <span style={{ display: "flex", gap: "1.5rem" }}>
-          <a href={site.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href={site.social.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={`mailto:${site.email}`}>Email</a>
-        </span>
-      </footer>
+      <div className="footer-wrap">
+        <footer className="footer container">
+          <span>© {new Date().getFullYear()} {site.fullName}</span>
+          <span className="footer-links">
+            <a href={site.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href={site.social.github} target="_blank" rel="noreferrer">GitHub</a>
+            <a href={`mailto:${site.email}`}>Email</a>
+          </span>
+        </footer>
+      </div>
     </>
   );
 }

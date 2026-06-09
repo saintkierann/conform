@@ -12,6 +12,12 @@ export const site = {
   tagline: "AI assessments, products and solutions — built for construction firms.",
   intro:
     "We help construction companies under 50 people cut through the AI noise. We assess where it actually fits, build what's worth building, and leave your team running it with confidence.",
+  // Short proof points shown under the hero headline.
+  heroFacts: [
+    { k: "Built for", v: "Firms under 50" },
+    { k: "We do", v: "Assess · Build · Enable" },
+    { k: "How", v: "On-site, plain-spoken" },
+  ],
 
   // Contact ──────────────────────────────────────────────────────────────────
   email: "hello@example.com", // ◂ PLACEHOLDER

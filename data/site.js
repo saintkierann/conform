@@ -9,16 +9,16 @@ export const site = {
   // Company identity ─────────────────────────────────────────────────────────
   company: "Conform",
   fullName: "Conform Consultancy",
-  eyebrow: "Construction × AI — done properly",
+  eyebrow: "AI consultancy for UK construction",
   // The tagline splits on the em dash ( — ); the second half gets the accent.
-  tagline: "Less admin, fewer errors, faster compliance — built for construction",
+  tagline: "Less paperwork, fewer errors, faster sign-off — built for UK construction",
   intro:
-    "Conform helps small and mid-sized UK construction firms cut the admin, tidy up compliance, and get hours back — by designing and building practical AI tools around the way your sites actually run.",
+    "We build AI tools for UK construction firms that take the admin off site — inspection reports, compliance evidence, the back-office grind. Mostly small and mid-sized builders under 50 staff. The work that eats your evenings, handled before it ever reaches building control.",
   // Short proof points shown under the hero headline.
   heroFacts: [
     { k: "Built for", v: "UK firms under 50" },
-    { k: "Focus", v: "Compliance & admin" },
-    { k: "Model", v: "Assess · Build · Run" },
+    { k: "We fix", v: "Admin & compliance" },
+    { k: "How", v: "Audit · Build · Hand over" },
   ],
 
   // Contact ──────────────────────────────────────────────────────────────────
@@ -31,26 +31,26 @@ export const site = {
 
   // About the company ─────────────────────────────────────────────────────────
   about: {
-    heading: "AI that speaks construction, not Silicon Valley.",
+    heading: "We start on site, not in a pitch deck.",
     body: [
-      "Most AI advice is written for tech companies, not the firms that pour concrete, win bids and run crews. Conform exists for the other side: small and mid-sized builders who don't need another platform — they need someone who understands the job and can tell which tools are actually worth the bother.",
-      "We come on-site, learn how you really work, and find the places where AI saves real hours or protects real margin — usually in admin, reporting and compliance. Then we build it, integrate it and hand it over. No jargon, no lock-in, no theatre.",
+      "Most AI advice is written for software companies — not for firms juggling retentions, variations and a building-control deadline. Small builders don't need another dashboard. They need someone who's sat in the site cabin and can tell which tools earn their keep and which are a waste of a Friday.",
+      "So that's where we begin. We learn how your jobs actually run — where the hours leak, where margin slips, where compliance gets messy — then build something that fixes it. You own it. Your team runs it. We're not looking to become a line on your overheads.",
     ],
-    traits: ["Construction-first", "Plain-spoken", "On-site", "Compliance-savvy", "Hands-on"],
+    traits: ["On site, not off-the-shelf", "Plain English", "Compliance-literate", "Build & hand over", "No lock-in"],
   },
 
   // Flagship product ──────────────────────────────────────────────────────────
   flagship: {
     eyebrow: "Flagship product",
     name: "Compliance Photo & Reporting",
-    tagline: "From site photo to building-control-ready report — on one phone.",
+    tagline: "Photo the work on site. Hand over a report that passes building control.",
     body:
-      "A mobile-first tool for project managers and site teams. Capture images and inspection data on site, structure the compliance evidence automatically, and generate reports that are ready for building control — without the evening admin or the lost paperwork.",
+      "Your project managers capture photos and inspection data as they walk the job. The app structures the evidence, fills the report and produces documentation that's ready for building control. The re-keying of site notes at 7pm, and the hunt for the one photo that proves a detail was signed off — gone.",
     features: [
-      "Capture site photos & inspection data on site",
-      "Structure compliance evidence automatically",
-      "Generate professional reports in minutes",
-      "Building-control-ready documentation",
+      "Capture photos and inspection data on site",
+      "Auto-structure the compliance evidence",
+      "Reports written in minutes, not evenings",
+      "Documentation that holds up at building control",
     ],
     status: "", // ◂ TO ADD — e.g. "In pilot" or "Now onboarding firms" (leave "" to hide)
   },
@@ -58,24 +58,24 @@ export const site = {
   // Services ──────────────────────────────────────────────────────────────────
   services: [
     {
-      title: "AI Opportunity Assessment",
+      title: "The on-site audit",
       body:
-        "We come on-site and map your tools, data and workflows — estimating, admin, safety, compliance — then give you a straight read on where AI saves real hours, where it doesn't, and what to do first.",
+        "We spend time on your sites and in the back office and map where the hours and margin actually go — estimating, RFIs, reporting, compliance. You get a straight list: what's worth automating, what isn't, and what to do first.",
     },
     {
-      title: "Compliance & Reporting Systems",
+      title: "Compliance & site reporting",
       body:
-        "Site-reporting automation, evidence management and building-control-ready documentation — so compliance stops eating evenings and nothing slips through the cracks.",
+        "Inspection reports, evidence trails and building-control documentation, automated. Built so a site manager can run it from a phone — and so nothing's missing the day someone asks you to prove it.",
     },
     {
-      title: "Workflow Automation & Custom Tools",
+      title: "Automation & custom tools",
       body:
-        "We automate the repetitive admin and build internal tools fitted to how your site runs — quotes, RFIs, document drafting and back-office work.",
+        "The repetitive admin — quotes, RFIs, document drafting, chasing — built into tools that fit how your firm already works. No rip-and-replace, no six-month rollout.",
     },
     {
-      title: "Implementation, Training & Support",
+      title: "Build, train, hand over",
       body:
-        "We build it, integrate it and leave your crew able to run it without us — with ongoing support and retainers when you want a steady hand.",
+        "We build it, connect it to what you already use, and train your team to run it without us. A retainer after, if you want a hand on call — not because you're tied in.",
     },
   ],
 
@@ -83,34 +83,34 @@ export const site = {
   work: [
     {
       index: "01",
-      client: "Endless paperwork",
-      kind: "Admin & reporting",
-      problem: "Site photos, inspection notes and reports pile up and get re-typed after every visit.",
-      outcome: "Capture once on site — the report writes itself.",
+      client: "The 7pm report",
+      kind: "Site admin",
+      problem: "Site notes and photos get re-typed into reports after hours. The PM's day ends long after the gate's shut.",
+      outcome: "Capture it once on site — the report's done before they leave.",
     },
     {
       index: "02",
-      client: "Slow compliance",
-      kind: "Documentation",
-      problem: "Compliance evidence is scattered across phones, emails and folders when building control asks.",
-      outcome: "Structured evidence, building-control-ready on demand.",
+      client: "The building-control scramble",
+      kind: "Compliance",
+      problem: "When building control asks for evidence, it's spread across phones, WhatsApp and folders — and someone loses a morning to it.",
+      outcome: "Every photo and check filed, and ready to hand over.",
     },
     {
       index: "03",
-      client: "Manual back-office",
+      client: "Admin that doesn't bill",
       kind: "Automation",
-      problem: "Quotes, RFIs and admin done by hand, quietly eating billable hours.",
-      outcome: "Automate the repetitive parts and give the team its hours back.",
+      problem: "Quotes, RFIs and chasing, all done by hand. Billable people doing unbillable work.",
+      outcome: "Automate the repetitive parts and put the hours back on the tools.",
     },
   ],
 
   // Why hire us ────────────────────────────────────────────────────────────────
   reasons: [
-    "We know construction, not just AI.",
-    "Built for firms under 50 — no enterprise bloat, no enterprise bill.",
-    "Compliance and admin first — the work that actually drains your team.",
-    "We'll tell you when AI isn't the answer.",
-    "Everything we build, your team can run without us.",
+    "We've worked in construction. We're not AI tourists.",
+    "Priced for firms under 50 — no enterprise software, no enterprise invoice.",
+    "We start with the admin and compliance that quietly bleed your margin.",
+    "If AI's the wrong tool for the job, we'll tell you.",
+    "You own what we build. No lock-in, no dependency.",
   ],
 
   // Team ──────────────────────────────────────────────────────────────────────

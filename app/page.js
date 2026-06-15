@@ -10,14 +10,6 @@ function Arrow({ className = "" }) {
   );
 }
 
-function ArrowUpRight({ className = "" }) {
-  return (
-    <svg className={`arrow ${className}`} width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 // Section header with oversized ghost numeral + serif title.
 function SectionHead({ index, eyebrow, title }) {
   return (
@@ -43,10 +35,10 @@ export default function Home() {
           <a href="#top" className="brand">{site.company}</a>
           <nav className="nav-links" aria-label="Primary">
             <a href="#about">About</a>
+            <a href="#product">Product</a>
             <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact" className="nav-cta">Contact</a>
+            <a href="#work">Where we help</a>
+            <a href="#contact" className="nav-cta">Book a call</a>
           </nav>
         </div>
       </header>
@@ -64,9 +56,12 @@ export default function Home() {
               site.tagline
             )}
           </Reveal>
+          <Reveal as="p" className="lead" delay={120} style={{ maxWidth: "56ch", marginTop: "1.6rem" }}>
+            {site.intro}
+          </Reveal>
           <Reveal className="hero-meta" delay={160}>
             <a href="#contact" className="btn btn--accent">
-              Start a conversation <Arrow />
+              Book a discovery call <Arrow />
             </a>
             <div className="hero-facts">
               {site.heroFacts.map((f) => (
@@ -103,10 +98,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Flagship product ───────────────────────────────────────────── */}
+        <section id="product" className="section">
+          <div className="container grid-2">
+            <Reveal>
+              <p className="eyebrow">02 — {site.flagship.eyebrow}</p>
+              <h2 className="heading">{site.flagship.name}</h2>
+              <p className="lead" style={{ maxWidth: "40ch", marginTop: "1.2rem" }}>
+                {site.flagship.tagline}
+              </p>
+              {site.flagship.status ? (
+                <div className="traits"><span className="trait">{site.flagship.status}</span></div>
+              ) : null}
+              <div style={{ marginTop: "1.6rem" }}>
+                <a href="#contact" className="btn btn--accent">Book a discovery call <Arrow /></a>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="muted" style={{ maxWidth: "52ch" }}>{site.flagship.body}</p>
+              <ul className="reasons" style={{ marginTop: "1.4rem" }}>
+                {site.flagship.features.map((f, i) => (
+                  <li key={i} className="reason">
+                    <span className="reason-mark">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ── Services ───────────────────────────────────────────────────── */}
         <section id="services" className="section">
           <div className="container">
-            <SectionHead index="02" eyebrow="What we do" title="Four ways we work with you." />
+            <SectionHead index="03" eyebrow="What we do" title="Four ways we work with you." />
             <div className="services-list">
               {site.services.map((s, i) => (
                 <Reveal key={s.title} className="service" delay={i * 50}>
@@ -119,10 +144,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Selected work ──────────────────────────────────────────────── */}
+        {/* ── Where we help ──────────────────────────────────────────────── */}
         <section id="work" className="section">
           <div className="container">
-            <SectionHead index="03" eyebrow="Selected work" title="Outcomes we're proud of." />
+            <SectionHead index="04" eyebrow="Where we help" title="The admin we make disappear." />
             <div className="work-list">
               {site.work.map((w, i) => (
                 <Reveal key={w.index} className="work-row" delay={i * 50}>
@@ -136,27 +161,6 @@ export default function Home() {
                     <p className="work-outcome"><Arrow /> {w.outcome}</p>
                   </div>
                 </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Projects ───────────────────────────────────────────────────── */}
-        <section id="projects" className="section">
-          <div className="container">
-            <SectionHead index="04" eyebrow="From our GitHub" title="Things we've built in the open." />
-            <div className="projects-grid">
-              {site.projects.map((p) => (
-                <a key={p.name} className="project" href={p.url} target="_blank" rel="noreferrer">
-                  <div className="project-name">{p.name}</div>
-                  <p className="project-blurb">{p.blurb}</p>
-                  <div className="project-tags">
-                    {p.tags.map((t) => (
-                      <span key={t} className="tag">{t}</span>
-                    ))}
-                  </div>
-                  <span className="project-link">View on GitHub <ArrowUpRight /></span>
-                </a>
               ))}
             </div>
           </div>
@@ -201,12 +205,16 @@ export default function Home() {
         <section id="contact" className="section">
           <div className="container contact">
             <Reveal as="p" className="eyebrow">07 — Contact</Reveal>
-            <Reveal as="h2" className="display" delay={80}>Let's figure out what's worth building.</Reveal>
+            <Reveal as="h2" className="display" delay={80}>Let's cut the admin out of your week.</Reveal>
             <Reveal className="contact-actions" delay={160}>
-              <a href={`mailto:${site.email}`} className="btn btn--accent">{site.email} <Arrow /></a>
               {site.bookingUrl ? (
-                <a href={site.bookingUrl} target="_blank" rel="noreferrer" className="btn">Book a call</a>
+                <a href={site.bookingUrl} target="_blank" rel="noreferrer" className="btn btn--accent">
+                  Book a discovery call <Arrow />
+                </a>
               ) : null}
+              <a href={`mailto:${site.email}`} className={site.bookingUrl ? "btn" : "btn btn--accent"}>
+                {site.email} <Arrow />
+              </a>
             </Reveal>
           </div>
         </section>

@@ -13,10 +13,10 @@ export const site = {
   // The tagline splits on the em dash ( — ); the second half gets the accent.
   tagline: "Less paperwork, fewer errors, faster sign-off — built for UK construction",
   intro:
-    "We build AI tools for UK construction firms that take the admin off site — inspection reports, compliance evidence, the back-office grind. Mostly small and mid-sized builders under 50 staff. The work that eats your evenings, handled before it ever reaches building control.",
+    "We build AI tools for ambitious construction firms and property developers — the ones running lean teams, coordinating subcontractors, and turning sites into serious money. We take the admin off site: inspection reports, compliance evidence, the back-office grind. So your people spend less time on paperwork and more on the work that actually pays.",
   // Short proof points shown under the hero headline.
   heroFacts: [
-    { k: "Built for", v: "UK firms under 50" },
+    { k: "Built for", v: "Builders & developers" },
     { k: "We fix", v: "Admin & compliance" },
     { k: "How", v: "Audit · Build · Hand over" },
   ],
@@ -33,7 +33,7 @@ export const site = {
   about: {
     heading: "We start on site, not in a pitch deck.",
     body: [
-      "Most AI advice is written for software companies — not for firms juggling retentions, variations and a building-control deadline. Small builders don't need another dashboard. They need someone who's sat in the site cabin and can tell which tools earn their keep and which are a waste of a Friday.",
+      "Most AI advice is written for software companies — not for firms juggling retentions, variations and a building-control deadline. Builders and developers don't need another dashboard. They need someone who's sat in the site cabin and can tell which tools earn their keep and which are a waste of a Friday.",
       "So that's where we begin. We learn how your jobs actually run — where the hours leak, where margin slips, where compliance gets messy — then build something that fixes it. You own it. Your team runs it. We're not looking to become a line on your overheads.",
     ],
     traits: ["On site, not off-the-shelf", "Plain English", "Compliance-literate", "Build & hand over", "No lock-in"],
@@ -107,7 +107,7 @@ export const site = {
   // Why hire us ────────────────────────────────────────────────────────────────
   reasons: [
     "We've worked in construction. We're not AI tourists.",
-    "Priced for firms under 50 — no enterprise software, no enterprise invoice.",
+    "Priced for lean local firms — no enterprise software, no enterprise invoice.",
     "We start with the admin and compliance that quietly bleed your margin.",
     "If AI's the wrong tool for the job, we'll tell you.",
     "You own what we build. No lock-in, no dependency.",
@@ -115,6 +115,6 @@ export const site = {
 
   // Team ──────────────────────────────────────────────────────────────────────
   team: [
-    { name: "Your name", role: "Founder & Principal Consultant" }, // ◂ TO ADD
+    { name: "Kieran Saint-Louis", role: "Founder & Principal Consultant" },
   ],
 };

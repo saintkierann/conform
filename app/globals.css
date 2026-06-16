@@ -117,8 +117,12 @@ h2.heading {
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background: color-mix(in srgb, var(--paper) 80%, transparent);
+  /* Solid fallback first so the sticky bar is never transparent if color-mix
+     is unsupported (older Safari) — stops content showing through the nav. */
+  background: rgba(248, 250, 252, 0.9);
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
   border-bottom: 1px solid var(--line);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
@@ -185,15 +189,19 @@ h2.heading {
 .product-figure { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
 .product-bespoke { margin-top: 1.8rem; font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); border-left: 2px solid var(--accent); padding-left: 1rem; max-width: 46ch; }
 .product-caption { font-size: 0.8rem; line-height: 1.5; color: var(--muted); text-align: center; max-width: 30ch; }
-.phone { position: relative; width: 100%; max-width: 300px; aspect-ratio: 9 / 19; background: var(--ink); border-radius: 40px; padding: 11px; box-shadow: 0 30px 60px -28px rgba(15, 23, 42, 0.5), 0 10px 24px -12px rgba(15, 23, 42, 0.3); }
+.phone { position: relative; width: 100%; max-width: 300px; aspect-ratio: 9 / 19; background: var(--ink); border-radius: 40px; box-shadow: 0 30px 60px -28px rgba(15, 23, 42, 0.5), 0 10px 24px -12px rgba(15, 23, 42, 0.3); }
 .phone::before { content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 38%; height: 7px; border-radius: 999px; background: rgba(255, 255, 255, 0.18); z-index: 2; }
-.phone-screen { position: relative; width: 100%; height: 100%; border-radius: 30px; overflow: hidden; background: var(--paper); }
-.phone-screen img { object-fit: cover; object-position: top; }
+/* Size the screen by absolute inset (not height:100%) so it resolves against
+   the aspect-ratio frame on iOS Safari — avoids the screen collapsing and the
+   result image overflowing/overlapping. */
+.phone-screen { position: absolute; inset: 11px; border-radius: 30px; overflow: hidden; background: var(--paper); }
 
 /* Phone demo — two clean phases that loop (~10.5s):
    1) Analysing (scan-line) ~5s   2) result slow-scrolls verdict → checklist
    + reasons ~4s, holds ~1s, fades back to the scan. */
-.demo { position: relative; background: var(--paper); --dur: 10.5s; }
+/* No position here — the element is .phone-screen (position:absolute), which is
+   the positioning context for the layers below. */
+.demo { background: var(--paper); --dur: 10.5s; }
 
 /* 1 — Analysing (sits beneath; shown until the result fades in) */
 .demo-analysing { position: absolute; inset: 0; }

@@ -53,6 +53,11 @@ export const site = {
       "Documentation that holds up at building control",
     ],
     status: "", // ◂ TO ADD — e.g. "In pilot" or "Now onboarding firms" (leave "" to hide)
+    // Honest framing — this is a real build, shown as proof of bespoke capability.
+    bespoke: "A bespoke tool we designed, built and shipped — the kind of build we deliver for construction firms.",
+    // Screenshot shown in the phone mockup.
+    shotAlt: "The Conform compliance app showing a fire-stopping check returning a Compliant verdict with a full pass checklist.",
+    caption: "A fire-stopping check returning a Compliant verdict — ready for the report.",
   },
 
   // Services ──────────────────────────────────────────────────────────────────

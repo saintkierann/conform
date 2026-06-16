@@ -43,14 +43,14 @@ export const site = {
   flagship: {
     eyebrow: "Flagship product",
     name: "Compliance Photo & Reporting",
-    tagline: "Photo the work on site. Hand over a report that passes building control.",
+    tagline: "Get to sign-off faster — and keep the build on programme.",
     body:
-      "Your project managers capture photos and inspection data as they walk the job. The app structures the evidence, fills the report and produces documentation that's ready for building control. The re-keying of site notes at 7pm, and the hunt for the one photo that proves a detail was signed off — gone.",
+      "Your team photographs the work as they go — plasterboard, decking, fire-stopping — and each shot is checked against UK building practice on the spot. Problems surface while they're still cheap to fix, before anything's boarded or plastered over. So sign-off comes round with no nasty surprises, snags already sorted, and the programme intact. Prevention beats cure.",
     features: [
-      "Capture photos and inspection data on site",
-      "Auto-structure the compliance evidence",
-      "Reports written in minutes, not evenings",
-      "Documentation that holds up at building control",
+      "Check the work on site, before it's covered up",
+      "Fix snags early — not at the sign-off inspection",
+      "Evidence and reports ready for building control",
+      "Fewer delays, closer to your completion date",
     ],
     status: "", // ◂ TO ADD — e.g. "In pilot" or "Now onboarding firms" (leave "" to hide)
     // Honest framing — this is a real build, shown as proof of bespoke capability.

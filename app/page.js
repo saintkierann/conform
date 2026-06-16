@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/data/site";
 import Reveal from "@/components/Reveal";
 
@@ -100,22 +101,14 @@ export default function Home() {
 
         {/* ── Flagship product ───────────────────────────────────────────── */}
         <section id="product" className="section">
-          <div className="container grid-2">
-            <Reveal>
+          <div className="container product-grid">
+            <Reveal className="product-copy">
               <p className="eyebrow">02 — {site.flagship.eyebrow}</p>
               <h2 className="heading">{site.flagship.name}</h2>
               <p className="lead" style={{ maxWidth: "40ch", marginTop: "1.2rem" }}>
                 {site.flagship.tagline}
               </p>
-              {site.flagship.status ? (
-                <div className="traits"><span className="trait">{site.flagship.status}</span></div>
-              ) : null}
-              <div style={{ marginTop: "1.6rem" }}>
-                <a href="#contact" className="btn btn--accent">Book a discovery call <Arrow /></a>
-              </div>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="muted" style={{ maxWidth: "52ch" }}>{site.flagship.body}</p>
+              <p className="muted" style={{ maxWidth: "52ch", marginTop: "1.4rem" }}>{site.flagship.body}</p>
               <ul className="reasons" style={{ marginTop: "1.4rem" }}>
                 {site.flagship.features.map((f, i) => (
                   <li key={i} className="reason">
@@ -124,6 +117,28 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              {site.flagship.bespoke ? (
+                <p className="product-bespoke">{site.flagship.bespoke}</p>
+              ) : null}
+              <div style={{ marginTop: "1.8rem" }}>
+                <a href="#contact" className="btn btn--accent">Book a discovery call <Arrow /></a>
+              </div>
+            </Reveal>
+            <Reveal className="product-figure" delay={120}>
+              <div className="phone">
+                <div className="phone-screen">
+                  <Image
+                    src="/app/firecheck-result.png"
+                    alt={site.flagship.shotAlt}
+                    fill
+                    sizes="(max-width: 860px) 70vw, 300px"
+                    style={{ objectFit: "cover", objectPosition: "top" }}
+                  />
+                </div>
+              </div>
+              {site.flagship.caption ? (
+                <p className="product-caption">{site.flagship.caption}</p>
+              ) : null}
             </Reveal>
           </div>
         </section>

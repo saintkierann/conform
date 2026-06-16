@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { site } from "@/data/site";
 import Reveal from "@/components/Reveal";
+import PhoneDemo from "@/components/PhoneDemo";
 
 // Small inline SVG arrow (no emojis as icons — per design system).
 function Arrow({ className = "" }) {
@@ -124,22 +124,7 @@ export default function Home() {
                 <a href="#contact" className="btn btn--accent">Book a discovery call <Arrow /></a>
               </div>
             </Reveal>
-            <Reveal className="product-figure" delay={120}>
-              <div className="phone">
-                <div className="phone-screen">
-                  <Image
-                    src="/app/firecheck-result.png"
-                    alt={site.flagship.shotAlt}
-                    fill
-                    sizes="(max-width: 860px) 70vw, 300px"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                  />
-                </div>
-              </div>
-              {site.flagship.caption ? (
-                <p className="product-caption">{site.flagship.caption}</p>
-              ) : null}
-            </Reveal>
+            <PhoneDemo />
           </div>
         </section>
 

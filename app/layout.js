@@ -1,24 +1,14 @@
-import { Newsreader, Roboto, Roboto_Mono } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { site } from "@/data/site";
 import "./globals.css";
 
-// Design system (ui-ux-pro-max): Exaggerated Minimalism.
-// Editorial serif display (Newsreader) + neutral body (Roboto) + mono labels.
-const newsreader = Newsreader({
+// One typeface across the whole site — clean, modern, consistent.
+const sans = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-  display: "swap",
-  adjustFontFallback: false,
-});
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
-const mono = Roboto_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata = {
   title: `${site.fullName} — AI for Construction`,
@@ -27,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${roboto.variable} ${newsreader.variable} ${mono.variable}`}>
+    <html lang="en" className={sans.variable}>
       <body>{children}</body>
     </html>
   );

@@ -190,6 +190,47 @@ h2.heading {
 .phone-screen { position: relative; width: 100%; height: 100%; border-radius: 30px; overflow: hidden; background: var(--paper); }
 .phone-screen img { object-fit: cover; object-position: top; }
 
+/* Phone demo — the reveal moment: Analysing → Compliant verdict + checklist.
+   --xo = confident ease-out-expo; greens match the app's verdict colours. */
+.demo-screen { --xo: cubic-bezier(0.16, 1, 0.3, 1); --good: #0f8a52; --good-bg: #e7f4ec; background: var(--paper); }
+.demo-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 12px; }
+.demo-brand { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13px; letter-spacing: -0.01em; color: var(--ink); }
+.demo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.demo-report { font-size: 10px; font-weight: 600; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+
+.demo-layer { position: absolute; left: 0; right: 0; top: 50px; bottom: 0; padding: 0 16px 16px; }
+.demo-analysing { transition: opacity 0.45s var(--ease), filter 0.45s var(--ease); }
+.is-revealed .demo-analysing { opacity: 0; filter: blur(7px); pointer-events: none; }
+
+.demo-photo { position: relative; height: 170px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(135deg, #cdd7e3, #aebccd 55%, #8295ab); }
+.demo-scan { position: absolute; left: 0; right: 0; top: 5%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); box-shadow: 0 0 18px 3px rgba(249, 115, 22, 0.55); animation: demoScan 1.7s var(--ease) infinite; }
+@keyframes demoScan { 0% { top: 5%; } 50% { top: 92%; } 100% { top: 5%; } }
+.demo-analabel { display: flex; align-items: center; gap: 9px; margin-top: 16px; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); }
+.demo-spin { width: 14px; height: 14px; border: 2px solid var(--line-strong); border-top-color: var(--accent); border-radius: 50%; animation: demoSpin 0.7s linear infinite; }
+@keyframes demoSpin { to { transform: rotate(360deg); } }
+.demo-skel { height: 9px; border-radius: 5px; background: #eef2f7; margin-top: 11px; }
+
+.demo-item { opacity: 0; transform: translateY(12px); transition: opacity 0.55s var(--xo), transform 0.6s var(--xo); transition-delay: calc(140ms + var(--i, 0) * 75ms); }
+.is-revealed .demo-item { opacity: 1; transform: none; }
+.demo-verdict { background: var(--good-bg); border: 1px solid rgba(15, 138, 82, 0.28); border-radius: 14px; padding: 13px 14px; }
+.demo-verdict-top { display: flex; align-items: center; justify-content: space-between; }
+.demo-verdict-word { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 16px; color: var(--good); }
+.demo-verdict-ico { width: 21px; height: 21px; border-radius: 50%; background: rgba(15, 138, 82, 0.14); color: var(--good); display: flex; align-items: center; justify-content: center; }
+.demo-chip { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--good); background: rgba(15, 138, 82, 0.14); padding: 3px 8px; border-radius: 999px; }
+.demo-verdict-sum { margin: 8px 0 0; font-size: 11px; line-height: 1.45; color: var(--ink-soft); }
+.demo-check { display: flex; align-items: center; gap: 10px; padding: 10px 2px; border-top: 1px solid var(--line); }
+.demo-check:first-of-type { margin-top: 6px; }
+.demo-tick { width: 19px; height: 19px; border-radius: 50%; background: rgba(15, 138, 82, 0.14); color: var(--good); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; transform: scale(0.5); transition: transform 0.5s var(--xo); transition-delay: calc(260ms + var(--i, 0) * 75ms); }
+.is-revealed .demo-tick { transform: scale(1); }
+.demo-check-label { flex: 1; font-size: 12px; font-weight: 600; color: var(--ink); }
+.demo-pass { font-size: 8.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--good); background: rgba(15, 138, 82, 0.14); padding: 2px 7px; border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-item, .demo-tick { transition: none; opacity: 1; transform: none; }
+  .demo-analysing { display: none; }
+  .demo-scan, .demo-spin { animation: none; }
+}
+
 /* ─────────────────────────── Buttons ────────────────────────────────────── */
 .btn {
   display: inline-flex;

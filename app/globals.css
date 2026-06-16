@@ -190,41 +190,72 @@ h2.heading {
 .phone-screen { position: relative; width: 100%; height: 100%; border-radius: 30px; overflow: hidden; background: var(--paper); }
 .phone-screen img { object-fit: cover; object-position: top; }
 
-/* Phone demo — Analysing intro, then the real result screenshot slow-scrolls
-   through every check + reason, holds, and gently loops (~5.6s). */
-.demo { position: relative; background: var(--paper); }
+/* Phone demo — a ~10s loop of the real app:
+   scan (longer) → result slow-scroll → tap "Add to report" → final report. */
+.demo { position: relative; background: var(--paper); --dur: 10s; }
 
-/* Analysing intro (sits beneath the result) */
+/* 1 — Analysing intro (sits beneath; shown until the result fades in) */
 .demo-analysing { position: absolute; inset: 0; }
 .demo-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 12px; }
 .demo-brand { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13px; letter-spacing: -0.01em; color: var(--ink); }
 .demo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.demo-report { font-size: 10px; font-weight: 600; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+.demo-report-pill { font-size: 10px; font-weight: 600; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
 .demo-anabody { padding: 0 16px; }
 .demo-photo { position: relative; height: 170px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(135deg, #cdd7e3, #aebccd 55%, #8295ab); }
-.demo-scan { position: absolute; left: 0; right: 0; top: 5%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); box-shadow: 0 0 18px 3px rgba(249, 115, 22, 0.55); animation: demoScan 1.9s var(--ease) infinite; }
+.demo-scan { position: absolute; left: 0; right: 0; top: 5%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); box-shadow: 0 0 18px 3px rgba(249, 115, 22, 0.55); animation: demoScan 2.1s var(--ease) infinite; }
 @keyframes demoScan { 0% { top: 5%; } 50% { top: 92%; } 100% { top: 5%; } }
 .demo-analabel { display: flex; align-items: center; gap: 9px; margin-top: 16px; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); }
 .demo-spin { width: 14px; height: 14px; border: 2px solid var(--line-strong); border-top-color: var(--accent); border-radius: 50%; animation: demoSpin 0.8s linear infinite; }
 @keyframes demoSpin { to { transform: rotate(360deg); } }
 .demo-skel { height: 9px; border-radius: 5px; background: #eef2f7; margin-top: 11px; }
 
-/* Real result screenshot, slow-scrolled */
-.demo-shotwrap { position: absolute; inset: 0; overflow: hidden; }
-.demo-shot { width: 100%; height: auto; display: block; opacity: 0; transform: translateY(0); will-change: transform, opacity; animation: demoScroll 5.6s linear infinite; }
-@keyframes demoScroll {
+/* 2 — Real result screenshot, slow-scrolled to the Add-to-report button */
+.demo-shotwrap, .demo-reportwrap { position: absolute; inset: 0; overflow: hidden; }
+.demo-shot { width: 100%; height: auto; display: block; opacity: 0; transform: translateY(0); will-change: transform, opacity; animation: demoResult var(--dur) linear infinite; }
+@keyframes demoResult {
   0%   { opacity: 0; transform: translateY(0); }
-  20%  { opacity: 0; transform: translateY(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  28%  { opacity: 1; transform: translateY(0); animation-timing-function: linear; }
-  82%  { opacity: 1; transform: translateY(-46%); }
-  91%  { opacity: 1; transform: translateY(-46%); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  97%  { opacity: 0; transform: translateY(-46%); }
+  24%  { opacity: 0; transform: translateY(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  29%  { opacity: 1; transform: translateY(0); animation-timing-function: linear; }
+  50%  { opacity: 1; transform: translateY(-50%); }
+  61%  { opacity: 1; transform: translateY(-50%); }
+  65%  { opacity: 0; transform: translateY(-50%); }
+  70%  { opacity: 0; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(0); }
+}
+
+/* 4 — Real final report, slow-scrolled */
+.demo-report { width: 100%; height: auto; display: block; opacity: 0; transform: translateY(0); will-change: transform, opacity; animation: demoReport var(--dur) linear infinite; }
+@keyframes demoReport {
+  0%   { opacity: 0; transform: translateY(0); }
+  64%  { opacity: 0; transform: translateY(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  69%  { opacity: 1; transform: translateY(0); animation-timing-function: linear; }
+  92%  { opacity: 1; transform: translateY(-42%); }
+  96%  { opacity: 1; transform: translateY(-42%); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  99%  { opacity: 0; transform: translateY(-42%); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+/* 3 — tap pulse + "Added to report" confirmation */
+.demo-tap { position: absolute; left: 50%; bottom: 24%; width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle, rgba(249, 115, 22, 0.5), transparent 68%); opacity: 0; transform: translate(-50%, -50%) scale(0); animation: demoTap var(--dur) ease-out infinite; pointer-events: none; }
+@keyframes demoTap {
+  0%, 48% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  51%     { opacity: 0.55; transform: translate(-50%, -50%) scale(0.25); }
+  57%     { opacity: 0; transform: translate(-50%, -50%) scale(1.7); }
+  100%    { opacity: 0; transform: translate(-50%, -50%) scale(1.7); }
+}
+.demo-toast { position: absolute; left: 14px; right: 14px; bottom: 16px; display: flex; align-items: center; gap: 8px; background: #0f8a52; color: #fff; border-radius: 12px; padding: 11px 13px; font-size: 12px; font-weight: 700; box-shadow: 0 10px 26px rgba(15, 138, 82, 0.35); opacity: 0; transform: translateY(16px); animation: demoToast var(--dur) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+.demo-toast-ico { display: inline-flex; }
+@keyframes demoToast {
+  0%, 51% { opacity: 0; transform: translateY(16px); }
+  55%     { opacity: 1; transform: translateY(0); }
+  61%     { opacity: 1; transform: translateY(0); }
+  65%     { opacity: 0; transform: translateY(16px); }
+  100%    { opacity: 0; transform: translateY(16px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .demo-shot { animation: none; opacity: 1; transform: translateY(0); }
-  .demo-analysing { display: none; }
+  .demo-analysing, .demo-reportwrap, .demo-tap, .demo-toast { display: none; }
   .demo-scan, .demo-spin { animation: none; }
 }
 

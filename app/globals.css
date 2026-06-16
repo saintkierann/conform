@@ -63,7 +63,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Section header: huge ghost index + serif title */
 .sec-head { display: flex; align-items: flex-start; gap: clamp(1rem, 4vw, 3rem); }
 .sec-index {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   font-weight: 400;
   line-height: 0.8;
@@ -74,7 +74,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .sec-title-wrap { padding-top: 0.4rem; }
 
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -88,14 +88,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ─────────────────────────── Typography ─────────────────────────────────── */
 .display {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.035em;
   margin: 0;
 }
 h2.heading {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 500;
   font-size: clamp(2rem, 5.5vw, 4rem);
   line-height: 1.0;
@@ -123,7 +123,7 @@ h2.heading {
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .brand {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -134,7 +134,7 @@ h2.heading {
 .brand::after { content: ""; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
 .nav-links { display: flex; gap: clamp(1rem, 3vw, 2.4rem); align-items: center; }
 .nav-links a {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -162,8 +162,8 @@ h2.heading {
 }
 .hero-facts { display: flex; flex-wrap: wrap; gap: 2rem; }
 .fact { display: flex; flex-direction: column; gap: 0.15rem; }
-.fact-k { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); }
-.fact-v { font-family: var(--font-serif); font-size: 1.15rem; }
+.fact-k { font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); }
+.fact-v { font-family: var(--font-sans); font-size: 1.15rem; }
 
 /* Hi-vis hazard stripe accent */
 .stripe {
@@ -184,7 +184,7 @@ h2.heading {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -214,8 +214,8 @@ h2.heading {
 }
 .service:last-child { border-bottom: 1px solid var(--line); }
 .service:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
-.service-num { font-family: var(--font-mono); color: var(--accent); font-size: 0.85rem; }
-.service-title { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 2rem); margin: 0; line-height: 1.05; }
+.service-num { font-family: var(--font-sans); color: var(--accent); font-size: 0.85rem; }
+.service-title { font-family: var(--font-sans); font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 2rem); margin: 0; line-height: 1.05; }
 .service p { margin: 0; color: var(--ink-soft); }
 @media (max-width: 860px) {
   .service { grid-template-columns: 2.5rem 1fr; }
@@ -233,9 +233,9 @@ h2.heading {
   align-items: baseline;
 }
 .work-list .work-row:last-child { border-bottom: 1px solid var(--line); }
-.work-num { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); color: var(--accent); line-height: 0.8; }
-.work-client { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.05; }
-.work-kind { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey); margin-top: 0.6rem; }
+.work-num { font-family: var(--font-sans); font-size: clamp(2rem, 4vw, 3rem); color: var(--accent); line-height: 0.8; }
+.work-client { font-family: var(--font-sans); font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.05; }
+.work-kind { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey); margin-top: 0.6rem; }
 .work-detail p { margin: 0 0 0.55rem; }
 .work-problem { color: var(--ink-soft); }
 .work-outcome { color: var(--ink); font-weight: 500; display: flex; gap: 0.5rem; }
@@ -265,11 +265,11 @@ h2.heading {
   transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .project:hover { border-color: var(--accent); box-shadow: 0 12px 30px -18px rgba(15, 23, 42, 0.35); }
-.project-name { font-family: var(--font-serif); font-weight: 500; font-size: 1.5rem; }
+.project-name { font-family: var(--font-sans); font-weight: 500; font-size: 1.5rem; }
 .project-blurb { color: var(--ink-soft); font-size: 0.98rem; flex: 1; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.66rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -278,18 +278,18 @@ h2.heading {
   border-radius: 999px;
   padding: 0.28rem 0.7rem;
 }
-.project-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.4rem; }
+.project-link { font-family: var(--font-sans); font-size: 0.78rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.4rem; }
 .project:hover .project-link .arrow { transform: translate(2px, -2px); }
 .project-link .arrow { transition: transform 0.2s var(--ease); }
 
 /* ─────────────────────────── Why us / reasons ───────────────────────────── */
 .reasons { display: grid; gap: 1.4rem; margin-top: 1.5rem; }
 .reason { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: baseline; font-size: clamp(1.1rem, 1.8vw, 1.35rem); }
-.reason-mark { color: var(--accent); font-family: var(--font-mono); font-size: 0.9rem; }
+.reason-mark { color: var(--accent); font-family: var(--font-sans); font-size: 0.9rem; }
 
 .traits { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
 .trait {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -302,8 +302,8 @@ h2.heading {
 /* ─────────────────────────── Team ───────────────────────────────────────── */
 .team-grid { margin-top: clamp(2.5rem, 6vh, 4rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); }
 .member { padding-top: 1.5rem; border-top: 2px solid var(--ink); }
-.member-name { font-family: var(--font-serif); font-weight: 500; font-size: 1.6rem; }
-.member-role { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.35rem; }
+.member-name { font-family: var(--font-sans); font-weight: 500; font-size: 1.6rem; }
+.member-role { color: var(--ink-soft); font-family: var(--font-sans); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.35rem; }
 
 /* ─────────────────────────── Contact ────────────────────────────────────── */
 .contact .display { font-size: clamp(2.4rem, 8vw, 6rem); max-width: 13ch; margin-top: 1.5rem; }
@@ -313,7 +313,7 @@ h2.heading {
 .footer-wrap { border-top: 1px solid var(--line); }
 .footer { padding-block: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; align-items: center; }
 .footer-links { display: flex; gap: 1.5rem; }
-.footer, .footer a { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
+.footer, .footer a { font-family: var(--font-sans); font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
 .footer a { transition: color 0.2s var(--ease); }
 .footer a:hover { color: var(--accent); }
 
